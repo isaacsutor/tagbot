@@ -21,5 +21,7 @@ class SQLiteManager:
         except sqlite3.Error as error:
             print(f"Error connecting to SQLite: {error}")
             raise
+    
+   
 
 

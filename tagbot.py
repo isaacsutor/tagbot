@@ -6,10 +6,11 @@ import discord
 from colorama import Back, Fore, Style
 from discord import app_commands
 from discord.ext import commands
+from discord.ui import Button, View
 from sqlalchemy import insert
 from sqlalchemy.orm import sessionmaker
-from actions import on_message_actions
 
+from actions import on_message_actions
 from db.db import engine
 from db.models import User, add_picture_to_db
 
@@ -48,9 +49,12 @@ class Client(commands.Bot):
         print(message.author.id)
         print(message.author.name)
         print(message.author.display_name)
-        if(on_message_actions.has_image(message)):
+        if on_message_actions.has_image(message):
             for attachment in message.attachments:
-                await add_picture_to_db(message.id, attachment, message.author.id, self.Session)
+                await add_picture_to_db(message.id,
+                                        attachment,
+                                        message.author.id,
+                                        self.Session)
             await on_message_actions.detect_image(self, message=message)
 
         new_user = User(user_id=message.author.id,
@@ -61,6 +65,19 @@ class Client(commands.Bot):
         session.add(new_user)
         session.commit()
         session.close()
+
+    async def hello(self, ctx):
+        button1 = Button(label='Click me!',
+                        style=discord.ButtonStyle.green, emoji='👏')
+        
+        async def button_callback(interaction):
+            await interaction.response.send_message('hi')
+        
+        button2 = Button(label='Danger!',
+                        style=discord.ButtonStyle.red, emoji='😢')
+        view = View()
+        view.add_item(button1)
+        await ctx.send('Hello')
 
 
 # with open('config.json', 'r') as f:

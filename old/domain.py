@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List
 import discord
 from dataclasses_json import dataclass_json
+from discord.ui import Button
 
 
 
