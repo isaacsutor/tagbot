@@ -1,5 +1,6 @@
 import dash_bootstrap_components as dbc
 from typing import List
+
 class PhotoGalleryComponent:
     def __init__(self, photos: List):
         self.photos = photos
@@ -10,10 +11,12 @@ class PhotoGalleryComponent:
                 "src": photo,
                 "header": 'With header',
                 "caption": "and caption",
-                "img_style": {"height": "500px"},# {"width":"500px","height":"500px"},
+                "img_style": {"max-height": "500px"}# , "max-width": "75vh"},# {"width":"500px","height":"500px"},
                 # "imgClassName": "",
             } for i, photo in enumerate(self.photos)],
-            
             variant="dark",
         )
-        return carousel
+        full_car = dbc.Row([dbc.Col([
+            carousel
+        ], width=8)], justify="center")
+        return full_car

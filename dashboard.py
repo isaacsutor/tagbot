@@ -23,6 +23,13 @@ tab1_content = dbc.Card(
         [
             html.P("This is tab 1!", className="card-text"),
             dbc.Button("Click here", color="success"),
+            html.P("This page has resin printer calibration information"),
+            html.P("First, download the Amerilab Towns calibration model"),
+            html.P("Print the model in the center of the print plate with nothing else on the printer"),
+            html.P("When finished printing, remove from print plate, gently wash, and let air dry"),
+            html.P("Do NOT cure."),
+            html.P("Take pictures of the front, back, and top of the model when fully dry (1-3 hours)"),
+            
         ]
     ),
     className="mt-3",
@@ -67,6 +74,8 @@ photos = ["https://images.squarespace-cdn.com/content/v1/56f4c7679f72666afb4935f
           "https://www.wargamer.com/wp-content/sites/wargamer/2021/05/best-paints-for-miniatures-citadel-technical-texture-paints-valhallan-blizzard-ogor-model.jpg"]
 
 gallery = photo_gallery.PhotoGalleryComponent(photos).get_component()
+
+gallery = photo_gallery.PhotoGalleryComponent(df["picture_url"].values.tolist()).get_component()
 
 app.layout = dbc.Container([
     header.HeaderComponent("Theme Explorer Sample App").get_component(),
