@@ -19,3 +19,20 @@ Tagbot helps to tag images on art/image discord servers to allow for better sear
 - Photo Gallery
 - Tag Searching Page
 - 
+
+### Patterns to Try:
+- Context Managers
+- Factory Pattern
+- Dependency injection/inversion
+- decorators
+- Strategy Pattern
+- LocalStack
+- Docker
+- Front End/Dash
+- Discord
+- Async
+- FastAPI
+- AI/ML
+- FastAI
+- Solid Documentation
+- Testing maybe automated githook testing/integration testing
